@@ -282,7 +282,7 @@ def batch_gradient_descent(parameters, learning_rate):
         layer.update(learning_rate)
 
 # Generate data
-X, y = generate_data(1500)  # Increased sample size
+X, y = generate_data(10000)  
 X_train, X_val, X_test, y_train, y_val, y_test = split_data_with_test(X, y, train_ratio=0.7, val_ratio=0.15)
 
 # Create and train network
@@ -296,7 +296,7 @@ network.add_layer(Layer(3, 10, Sigmoid()))
 network.add_layer(Layer(10, 1, Sigmoid()))
 
 # Train with metrics
-network.train_batch(X_train, y_train, batch_size=32, epochs=1000, X_val=X_val, y_val=y_val)
+network.train_batch(X_train, y_train, batch_size=32, epochs=100, X_val=X_val, y_val=y_val)
 
 # Test the model
 test_metrics = network.test(X_test, y_test)
